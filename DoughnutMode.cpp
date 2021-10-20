@@ -4,19 +4,19 @@
  * email: lrivas@chapman.edu
  * CPSC-350-03
  * Assignment 3 - Game of Life
- * This is the implementation .cpp file for the DoughnutMode class.
+ * This is the implementation .cpp file for the DoughnutMode class which is used to play Doughnut mode and print or output to a file the generations along with tell if the wolrd is stable or empty
 */
 #include "DoughnutMode.h"
 
-DoughnutMode::DoughnutMode() {
+DoughnutMode::DoughnutMode() { //default constructor
   isStable = true;
 }
 
-DoughnutMode::~DoughnutMode() {
+DoughnutMode::~DoughnutMode() { //default desctructor
 
 }
 
-void DoughnutMode::printWorld(char** world, unsigned short rows, unsigned short columns) {
+void DoughnutMode::printWorld(char** world, unsigned short rows, unsigned short columns) { //prints the world to the terminal
   for (int r = 0; r < rows; ++r) {
     for (int c = 0; c < columns; ++c) {
       cout << world[r][c];
@@ -25,7 +25,7 @@ void DoughnutMode::printWorld(char** world, unsigned short rows, unsigned short 
   }
 }
 
-void DoughnutMode::outputToFile(char** world, unsigned short rows, unsigned short columns, string outputFile, unsigned int generationNumber) {
+void DoughnutMode::outputToFile(char** world, unsigned short rows, unsigned short columns, string outputFile, unsigned int generationNumber) { // appends the world to a given file
   fstream fileStream;
   fileStream.open(outputFile, ios::app); // opens outputFile in append mode
   if (fileStream.fail()) { // checks if file was opened incorrectly
@@ -44,7 +44,7 @@ void DoughnutMode::outputToFile(char** world, unsigned short rows, unsigned shor
   fileStream.clear();
 }
 
-unsigned short DoughnutMode::countNeighbors(char** world, unsigned short rows, unsigned short columns, unsigned short rowOfElement, unsigned short columnOfElement) { //this method differs per mode
+unsigned short DoughnutMode::countNeighbors(char** world, unsigned short rows, unsigned short columns, unsigned short rowOfElement, unsigned short columnOfElement) { //counts the neighbors of an element
   unsigned short count = 0;
   if (rowOfElement != 0 && columnOfElement != 0 && world[rowOfElement-1][columnOfElement-1] == 'X') { //check for top left element
     count++;
@@ -152,7 +152,7 @@ unsigned short DoughnutMode::countNeighbors(char** world, unsigned short rows, u
   return count;
 }
 
-bool DoughnutMode::isEmpty(char** world, unsigned short rows, unsigned short columns) {
+bool DoughnutMode::isEmpty(char** world, unsigned short rows, unsigned short columns) { //checks if a world is empty
   for (int r = 0; r < rows; ++r) { //copies nextWorld into world
     for (int c = 0; c < columns; ++c) {
       if (world[r][c] == 'X') {
@@ -163,12 +163,12 @@ bool DoughnutMode::isEmpty(char** world, unsigned short rows, unsigned short col
   return true; //if this is reached, no X was found in world aka it is empty
 }
 
-bool DoughnutMode::getIsStable() {
+bool DoughnutMode::getIsStable() { //checks if a world is stable
   return isStable;
 }
 
 //follow rules and use world to make nextWorld (next generation) then copy into world and print world along with generaton num
-void DoughnutMode::playDoughnutMode(char** world, unsigned short rows, unsigned short columns, unsigned short briefPause, string outputFile, unsigned int generationNumber) {
+void DoughnutMode::playDoughnutMode(char** world, unsigned short rows, unsigned short columns, unsigned short briefPause, string outputFile, unsigned int generationNumber) { // plays the game of life in classic mode
   isStable = true;
   char** nextWorld = new char*[rows]; //creates empty char** nextWorld
   for (int i = 0; i < rows; ++i) {

@@ -4,28 +4,28 @@
  * email: lrivas@chapman.edu
  * CPSC-350-03
  * Assignment 3 - Game of Life
- * This is the implementation .cpp file for the Configuration class.
+ * This is the implementation .cpp file for the Configuration class which creates the configuration of the initial world
 */
 #include "Configuration.h"
 
-Configuration::Configuration() { //keep empty?
+Configuration::Configuration() { //default constructor
   rows = 0;
   columns = 0;
 }
 
-Configuration::~Configuration() { //keep empty?
+Configuration::~Configuration() { //default destructor
 
 }
 
-unsigned short Configuration::getRows() {
+unsigned short Configuration::getRows() { //returns rows
   return rows;
 }
 
-unsigned short Configuration::getColumns() {
+unsigned short Configuration::getColumns() { //returns columns
   return columns;
 }
 
-char** Configuration::randomConfiguration() {
+char** Configuration::randomConfiguration() { //creates a random configuration with dimensions and population density given by user input
   double populationDensity;
   unsigned short initialPopulation;
   cout << "How many rows should the world have?" << endl;
@@ -37,7 +37,7 @@ char** Configuration::randomConfiguration() {
     world[i] = new char[columns];
   }
   cout << "Enter a decimal greater than 0 and less than or equal to 1 for the initial population density of the world" << endl;
-  cin >> populationDensity; //ADD A WAY TO CHECCK IF NUMBER ENTERED IS WITHIN CORRECT RANGE
+  cin >> populationDensity; 
   initialPopulation = (rows * columns) * populationDensity; //rounded down to nearest int
   for (int r = 0; r < rows; ++r) { //fills world with correct num of X's and -'s, will randomly shuffle order later
     for (int c = 0; c < columns; ++c) {
@@ -60,7 +60,7 @@ char** Configuration::randomConfiguration() {
   return world;
 }
 
-char** Configuration::mapFile() {
+char** Configuration::mapFile() { //creates a configuration using a map file inputted by the user
   string fileName;
   fstream fileStream;
   char character;
