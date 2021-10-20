@@ -1,0 +1,29 @@
+README Assignment 3: Game of Life
+USING FIRST LATE DAY FOR THIS ASSIGNMENT
+
+1) Luis Rivas
+   2365948
+   lrivas@chapman.edu
+   CPSC 350-03
+   Assignment 3: Game of Life
+
+2) Configuration.h
+   Configuration.cpp
+   ClassicMode.h
+   ClassicMode.cpp
+   DoughnutMode.h
+   DoughnutMode.cpp
+   MirrorMode.h
+   MirrorMode.cpp
+   main.cpp
+
+3) No errors or deviations from the assignment specification
+
+4) Used https://www.cplusplus.com/reference/cstdlib/rand/ for refresher on rand()
+   Used https://www.youtube.com/watch?v=2r4M8f4ZAH4 to learn how to randomize the order of a 2d array
+   Used https://www.youtube.com/watch?v=mGl9LO-je3o to understand how to properly create the pointer for the 2D array aka char**
+   Used https://stackoverflow.com/questions/158585/how-do-you-add-a-timed-delay-to-a-c-program to learn how to make a "brief pause"
+   Worked alone.
+
+5) g++ *.cpp
+   ./a.out
